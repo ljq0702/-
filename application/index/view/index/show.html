@@ -1,0 +1,68 @@
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<title>问卷查看</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<meta name="robots" content="noindex,nofollow">
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+		<script type="text/javascript" src="../public/static/index/question/resources/script/configBase.js"></script>
+		<script type="text/javascript" src="../public/static/index/question/resources/script/exam/exam.js"></script>
+	</head>
+
+	<body>
+		<!--主体框架开始-->
+		<div class="pagebox" id="pageContentId">
+			<div class="home-desktop" id="desktop_scroll">
+				<div style="width:1025px; position: relative;">
+					<div class="title">
+						<div class="name left">查看问卷</div>
+						<div class="function left">
+							<!--[&nbsp;<a href="javascript:;" onclick="definedLayer('/addTeacherData.html',{},'html');">添加</a>&nbsp;]-->
+						</div>
+						<div class="clear"></div>
+					</div>
+
+						<!--出题-->
+						<div id="checke">
+
+						</div>
+			</div>
+
+		<!--</div>-->
+		<!--主体框架结束-->
+		<script>
+            (function($){
+                $.getUrlParam
+                    = function(name)
+                {
+                    var reg
+                        = new RegExp("(^|&)"+
+                        name +"=([^&]*)(&|$)");
+                    var r
+                        = window.location.search.substr(1).match(reg);
+                    if (r!=null) return unescape(r[2]); return null;
+                };
+                var id=$.getUrlParam('id');
+                //console.log(id);
+                $.get("{grs:url('index/edit/show')}",{id:id},function (e) {
+                    //console.log(e);
+                    var dataObj=eval("("+e+")");
+                    //console.log(dataObj);
+                    var tmp="";
+                    for (var i in dataObj){
+                        tmp=dataObj[i];
+                    }
+                    $('#checke').append(tmp);
+                    //console.log(tmp);
+                },'json');
+            })(jQuery);
+
+		</script>
+	</body>
+
+</html>

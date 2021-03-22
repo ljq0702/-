@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>edit</title>
+		<link rel="stylesheet" type="text/css" href="/static/index/edit/edit.css" />
+		<link rel="stylesheet" type="text/css" href="/static/index/edit/main_edit.css" />
+	</head>
+	<>
+		<div id="border">
+			<!-- 左边，控件板块 -->
+			<div id="widget">
+				<div id="widget_head">
+					控件库
+				</div>
+
+				<!-- 1 -->
+				<div id="w_header" class="widget_item" draggable="true" ondragstart="set_widget_type(event)">
+					<div class="wicon"><img src="/static/index/edit/edit_img/title.png"></div>
+					<p class="description">题目</p>
+				</div>
+
+				<!-- 2 -->
+				<div id="w_checkbox" class="widget_item" draggable="true" ondragstart="set_widget_type(event)">
+					<div class="wicon"><img src="/static/index/edit/edit_img/checkbox.png"></div>
+					<p class="description">复选框</p>
+				</div>
+
+				<!-- 3 -->
+				<div id="w_radio" class="widget_item" draggable="true" ondragstart="set_widget_type(event)">
+					<div class="wicon"><img src="/static/index/edit/edit_img/single_radio.png"></div>
+					<p class="description">单选框</p>
+				</div>
+
+				<!-- 4 -->
+				<div id="w_text" class="widget_item" draggable="true" ondragstart="set_widget_type(event)">
+					<div class="wicon"><img src="/static/index/edit/edit_img/singleline_text.png"></div>
+					<p class="description">单行文本框</p>
+				</div>
+
+				<!-- 5 -->
+				<div id="w_number" class="widget_item" draggable="true" ondragstart="set_widget_type(event)">
+					<div class="wicon"><img src="/static/index/edit/edit_img/input_number.png"></div>
+					<p class="description">数字输入框</p>
+				</div>
+
+				<!-- 6 -->
+				<div id="w_article" class="widget_item" draggable="true" ondragstart="set_widget_type(event)">
+					<div class="wicon"><img src="/static/index/edit/edit_img/text.png"></div>
+					<p class="description">文本域</p>
+				</div>
+
+<!-- +++***++++++++++++++++++++****++++++++++++++++++++++++++++***+++++++++++++++++++++++++++ -->
+				<!-- 隐藏的 控件模板 -->
+				<div style="visibility: hidden;">
+
+					<div id="checkbox" class="option_item" draggable="true" ondragstart="set_delete(event)" ondragover="allowDrop(event)" ondragend="hide_delete_box(event)">
+						<input type="checkbox" name="" />
+						<div class="btn_box" ondblclick="change_text(event)">
+							双击键入文本
+						</div>
+					</div>
+
+					<div id="radio" class="option_item" draggable="true" ondragstart="set_delete(event)" ondragover="allowDrop(event)" ondragend="hide_delete_box(event)">
+						<input type="radio" name="" />
+						<div class="btn_box" ondblclick="change_text(event)">
+							双击键入文本
+						</div>
+					</div>
+
+					<div id="input" class="option_item" draggable="true" ondragstart="set_delete(event)" ondragover="allowDrop(event)" ondragend="hide_delete_box(event)">
+						<input type="input" name="" placeholder="请输入单行文本" />
+					</div>
+
+					<div id="number" class="option_item" draggable="true" ondragstart="set_delete(event)" ondragover="allowDrop(event)" ondragend="hide_delete_box(event)">
+						<input type="number" name="" placeholder="请输入数字" />
+					</div>
+
+					<div id="article" class="option_item" draggable="true" ondragstart="set_delete(event)" ondragover="allowDrop(event)" ondragend="hide_delete_box(event)">
+						<textarea rows="" cols="">
+						</textarea>
+					</div>
+
+					<div class="edit_item" ondragend="hide_box(event)" draggable="true" ondragstart="set_delete(event)" ondragover="allowDrop(event)">
+						<div class="number" ondblclick="change_text(event)">
+							1.
+						</div>
+						<div class="question_border" ondragend="hide_box(event)">
+							<div class="question" ondblclick="change_text(event)" ondragend="hide_box(event)" ondragleave="hide_box(event)">
+								这里是标题，双击，以键入标题
+							</div>
+							<div class="option">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 右边，主体编辑页 -->
+			<div id="main">
+				<!-- 顶部，问卷标题区 -->
+				<div id="question_title" ondblclick="change_text(event)">
+					双击编辑问卷标题
+				</div>
+
+				<form action="{:url('index/edit/sub')}" method="post">
+				<!-- 中部，问卷编辑区 -->
+				<div id="question_edit" ondragstart="show_box(event)" ondragover="allowDrop(event)" ondragenter="show_box(event)" ondragleave="hide_box(event)"
+				 ondrop="drop(event)" ondragend="hide_box(event)">
+					<!-- 一个问题项 -->
+				</div>
+			</div>
+		</div>
+		
+		<!-- 底部，保存按钮 -->
+		<div id="save">
+			<div id="delete_widget" ondragover="allowDrop(event)" ondrop="delete_widget(event)" ondragenter="show_delete_box(event)" >
+				拖动到此处，删除
+			</div>
+			<div id="save_border">
+				<!--<button class="btn_save">保存</button>-->
+				<input type="submit" value="保存" class="btn_save">
+				<button class="btn_save"> <a href="{:url('index/manage/index')}">放弃</a></button>
+			</div>
+		</div>
+	</form>
+		<script src="/static/index/edit/edit.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/index/edit/widget.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
